@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lab 2</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="libraries/p5.min.js"></script>
+  </head>
+
+  <body>
+    <div id="control-panel">
+      <div class="container">
+        <button id="translate-btn">Перенос</button>
+        <button id="reflect-btn">Отражение</button>
+      </div>
+      
+      <div class="container">
+        <label for="x-scale">Коэффицент по X</label>
+        <input type="number" value="1" step="0.1" id="x-scale" class="transform-input">
+
+        <label for="y-scale">Коэффицент по Y</label>
+        <input type="number" value="1" step="0.1" id="y-scale" class="transform-input">
+        <button id="scale-btn">Масштабировать</button>
+      </div>
+
+      <div class="container">
+        <label for="y-scale">Угол поворота</label>
+        <input type="number" value="0" step="5" max="360" min="-360" id="rotate-angle" class="transform-input">
+        <button id="rotate-btn">Повернуть</button>
+      </div>
+
+
+      <div class="container">
+        <label for="matrix">Матрица преобразования</label>
+        <table id="matrix">
+          <tbody>
+            <tr>
+              <td><input type="number" id="cell0" value="1" step="0.1"></td>
+              <td><input type="number" id="cell1" value="0" step="0.1"></td>
+              <td><input type="number" id="cell2" value="0" step="0.1"></td>
+            </tr>
+            <tr>
+              <td><input type="number" id="cell3" value="0" step="0.1"></td>
+              <td><input type="number" id="cell4" value="1" step="0.1"></td>
+              <td><input type="number" id="cell5" value="0" step="0.1"></td>
+            </tr>
+            <tr>
+              <td><input type="number" id="cell6" value="0" step="0.1"></td>
+              <td><input type="number" id="cell7" value="0" step="0.1"></td>
+              <td><input type="number" id="cell8" value="1" step="0.1"></td>
+            </tr>
+          </tbody>
+        </table> 
+      </div>
+
+      <div class="container checkboxes">
+        <div>
+          <input type="checkbox" id="hide-grid">
+          <label for="hide-grid">Скрывать сетку</label>
+        </div>
+        <div>
+          <input type="checkbox" id="hide-axis">
+          <label for="hide-grid">Скрывать оси</label>
+        </div>
+        <div>
+          <input type="checkbox" id="hide-helpers">
+          <label for="hide-grid">Скрывать опорные элементы</label>
+        </div>
+      </div>
+
+      <!-- <div class="container">
+        <label for="zoom-slider">Масштаб</label>
+        <input type="number" value="1" min="0" step="0.1" id="zoom-slider">
+      </div> -->        
+    </div>
+    
+    <div id="canvas-container"></div>
+
+    <script src="./node_modules/mathjs/lib/browser/math.js" type="text/javascript"></script>
+    <script src="src/point.js"></script>
+    <script src="src/figure.js"></script>
+    <script src="src/initial_sketch.js"></script>
+    <script src="src/transformed_sketch.js"></script>
+    <script src="src/main.js"></script>
+  </body>
+</html>

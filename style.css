@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100vh;
+}
+
+body  {
+  height: 100%;
+  background-color: rgb(184, 184, 184);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#control-panel {
+  background: white;
+  width: 1110px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: rgb(250, 250, 250);
+  display: flex;
+  padding: 10px;
+  gap:10px;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.transform-input {
+  text-align: right;
+  margin-bottom: 10px;
+  width: 125px;
+}
+
+button {
+  width: 125px;
+  height: 100%;
+}
+
+td {
+  text-align: center;
+}
+
+label {
+  margin-bottom: 3px;
+}
+
+input[id^="cell"] {
+  width: 70px;
+  margin-bottom: 10px;
+}
+
+.checkboxes {
+  gap: 5px;
+}
+
+#translate-btn {
+  margin-bottom: 10px;
+}
+
+#canvas-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
