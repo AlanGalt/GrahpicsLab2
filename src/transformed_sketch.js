@@ -1,7 +1,5 @@
 let transformedSketch = function(p) {
   const pRadius = 8;
-  // p.points;
-  // p.zoom = 1;
   p.step = 11;
   p.locked = true; 
   p.drawing = false;
@@ -17,11 +15,11 @@ let transformedSketch = function(p) {
 
   p.draw = function() {
     p.locked ? p.background(150) : p.background(250);
+    p.showGrid();
     p.showAxis();
     
     if(!p.locked) {
       p.points = figure.transformed;
-      p.showGrid();
       p.showFigure();
       
       p.push();
@@ -146,13 +144,13 @@ let transformedSketch = function(p) {
 
   p.handleClick = function() {
     let [wMouseX, wMouseY] = toWorld(p.mouseX, p.mouseY);
-    wMouseX = Math.round(wMouseX * 10) / 10;
-    wMouseY = Math.round(wMouseY * 10) / 10;
-    console.log(wMouseX, wMouseY);
+    wMouseX = (Math.round(wMouseX / p.step / 2 * 10) / 10) * p.step * 2;
+    wMouseY = (Math.round(wMouseY / p.step / 2 * 10) / 10) * p.step * 2;
     if (p.translate) { // figure has been drawn
       figure.translation.x = wMouseX;
       figure.translation.y = wMouseY;
       p.translate = false;
+      repeat();
       figure.translate();
     } else if (p.reflect) {
       for (let i = 0; i < p.points.length; i++) {
@@ -160,7 +158,8 @@ let transformedSketch = function(p) {
           p.reflect = false;
           let [reflectX, reflectY] = toWorld(p.points[i].x, p.points[i].y);
           figure.reflection.x = reflectX;
-          figure.reflection.y = reflectY; 
+          figure.reflection.y = reflectY;
+          repeat();
           figure.reflect();
         }
       }
@@ -168,6 +167,7 @@ let transformedSketch = function(p) {
       figure.rotation.x = wMouseX;
       figure.rotation.y = wMouseY;
       p.rotate = false;
+      repeat();
       figure.rotate();
     }
   }
@@ -210,12 +210,3 @@ let transformedSketch = function(p) {
     p.pop();
   }
 }
-
-
-// p.points = figure.transformed.map(point => {
-//   let [x, y] = toWorld(point.x, point.y);
-//   x *= p.zoom;
-//   y *= p.zoom;
-//   [x, y] = toScreen(x, y);
-//   return new Point(x, y);
-// });

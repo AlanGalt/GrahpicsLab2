@@ -66,10 +66,12 @@
           <input type="checkbox" id="hide-axis">
           <label for="hide-grid">Скрывать оси</label>
         </div>
-        <div>
-          <input type="checkbox" id="hide-helpers">
-          <label for="hide-grid">Скрывать опорные элементы</label>
+        <div class="container">
+          <label for="hide-grid">Интервал повторения (с)</label>
+          <input type="number" id="rpt-interval" value="1" step="0.1" min="0.1">
+          <button id="stop-btn">Остановить</button>
         </div>
+        <button id="reset-btn">Сбросить</button>
       </div>
 
       <!-- <div class="container">

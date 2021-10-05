@@ -77,6 +77,7 @@ let initialSketch = function(p) {
           for (let i = 0; i < controls.length; i++) { //enable controls
             controls[i].disabled = false;
           }
+          stopBtn.disabled = true;
           transformed.redraw();
         }
       }
@@ -92,7 +93,11 @@ let initialSketch = function(p) {
           return;
         }
       }
-      points.push(new Point(p.mouseX, p.mouseY));
+      let [wMouseX, wMouseY] = toWorld(p.mouseX, p.mouseY);
+      wMouseX = (Math.round(wMouseX / transformed.step / 2 * 10) / 10) * transformed.step * 2;
+      wMouseY = (Math.round(wMouseY / transformed.step / 2 * 10) / 10) * transformed.step * 2;
+      [wMouseX, wMouseY] = toScreen(wMouseX, wMouseY);
+      points.push(new Point(wMouseX, wMouseY));
       lastP = points[points.length - 1];
     }
   };

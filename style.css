@@ -64,6 +64,18 @@ input[id^="cell"] {
   gap: 5px;
 }
 
+#reset-btn {
+  width: 100%;
+}
+
+#stop-btn {
+  width: 100%;
+}
+
+#rpt-interval {
+  text-align: right;
+}
+
 #translate-btn {
   margin-bottom: 10px;
 }

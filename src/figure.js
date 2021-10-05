@@ -24,6 +24,7 @@ class Figure {
       y: 0,
       angle: 0
     }
+    this.current = "";
   }
 
   translate() {
@@ -37,7 +38,6 @@ class Figure {
     this.resultMatrix = math.multiply(this.resultMatrix, translationMatrix);
     this.updateTransformed();
     this.updateTable();
-    
   }
 
   scale() {
@@ -123,12 +123,31 @@ class Figure {
     }
   }
 
-  // applyZoom() {
-  //   for (let i = 0; i < this.transformed.length; i++) {
-  //     [this.transformed[i].x, this.transformed[i].y] = toWorld(this.transformed[i].x, this.transformed[i].y);
-  //     this.transformed[i].x *= transformed.zoom;
-  //     this.transformed[i].y *= transformed.zoom;
-  //     [this.transformed[i].x, this.transformed[i].y] = toScreen(this.transformed[i].x, this.transformed[i].y);
-  //   }
-  // }
+  resetResultMatrix() {
+    this.resultMatrix = [
+      [1, 0, 0],
+      [0, 1, 0],
+      [0, 0, 1],
+    ]; 
+  }
+
+  resetTransfromations() {
+    this.translation = {
+      x: 0,
+      y: 0
+    };
+    this.scaling = {
+      x: 0,
+      y: 0
+    }
+    this.reflection = {
+      x: 0,
+      y: 0
+    }
+    this.rotation = {
+      x: 0,
+      y: 0,
+      angle: 0
+    }
+  }
 }
