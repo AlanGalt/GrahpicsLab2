@@ -142,3 +142,22 @@ function toScreen(worldX, worldY) {
   let screenY = -worldY + height / 2;
   return [screenX, screenY];
 }
+
+function matrixDot (A, B) {
+  const result = new Array(A.length).fill(0).map(row => new Array(B[0].length).fill(0));
+  return result.map((row, i) => {
+    return row.map((val, j) => {
+      return A[i].reduce((sum, elm, k) => sum + (elm*B[k][j]), 0);
+    });
+  });
+}
+
+function vectorMatrixDot(V, M) {
+  const result = new Array(V.length).fill(0);
+  for (let i = 0; i < M.length; i++) {
+    for (let j = 0; j < M[0].length; j++) {
+      result[i] += (M[j][i]*V[j]);
+    }
+  }
+  return result;
+}

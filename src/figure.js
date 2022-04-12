@@ -35,7 +35,7 @@ class Figure {
       [0, 1, 0],
       [x, y, 1]
     ];
-    this.resultMatrix = math.multiply(this.resultMatrix, translationMatrix);
+    this.resultMatrix = matrixDot(this.resultMatrix, translationMatrix);
     this.updateTransformed();
     this.updateTable();
   }
@@ -49,7 +49,7 @@ class Figure {
       [0, 0, 1]
     ];
     
-    this.resultMatrix = math.multiply(this.resultMatrix, scalingMatrix);
+    this.resultMatrix = matrixDot(this.resultMatrix, scalingMatrix);
     
     this.updateTransformed();
     this.updateTable();
@@ -89,12 +89,11 @@ class Figure {
     this.translation.y = -this.rotation.y;
     this.translate();
 
-    this.resultMatrix = math.multiply(this.resultMatrix, rotationMatrix);
+    this.resultMatrix = matrixDot(this.resultMatrix, rotationMatrix);
 
     this.translation.x = this.rotation.x;
     this.translation.y = this.rotation.y;
     this.translate();
-
     [this.translation.x, this.translation.y] = [translateX, translateY];
   }
 
@@ -103,7 +102,7 @@ class Figure {
     for(let point of this.initial) {
       let [pointX, pointY] = toWorld(point.x, point.y);
       let vec = [pointX, pointY, 1];
-      let [x1, y1] = math.multiply(vec, this.resultMatrix);
+      let [x1, y1] = vectorMatrixDot(vec, this.resultMatrix);
       [x1, y1] = toScreen(x1, y1);
       result.push(new Point(x1, y1));
     }
